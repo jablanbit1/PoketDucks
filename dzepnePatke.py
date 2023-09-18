@@ -22,15 +22,15 @@ class Patkica:
         pass              
                 
 
-g = 0.3
+g = 0.4
 
 class Kockica:
     
     def __init__(self, x, y, vx, vy):
         self.x = x
         self.y = y
-        self.vx = vx
-        self.vy = vy
+        self.vx = vx * (-0.1)
+        self.vy = vy * (-0.1)
         self.a = 20
         
     def crtaj(self, pozadina):
@@ -38,7 +38,6 @@ class Kockica:
         x = self.x
         y = self.y
         pg.draw.rect(pozadina, (0, 255, 255), pg.Rect(x - a / 2, y - a / 2, a, a))
-        pg.display.flip()
         
     def gravitacija(self):
         self.vy += g

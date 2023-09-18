@@ -5,15 +5,15 @@ from Teren import Pravougaonik
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
 
-g = 0.3
+g = 0.4
 
 pg.init()
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
 
-patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 50, 30)
-patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 50, 30)
+patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
+patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
 potez1 = False
 potez2 = True
@@ -52,6 +52,11 @@ while running:
     patkica2.crtaj(screen)
     if kockicaa:
         k.crtaj(screen)
+        k.mrdaj()
+        k.gravitacija()
+        #if k.x < 0 or k.x > SCREEN_WIDTH or k.y > SCREEN_HEIGHT:
+            
+        
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     
