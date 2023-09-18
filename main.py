@@ -21,7 +21,7 @@ inklik = False
 
 while running:
     screen.fill((200, 200, 240))
-    
+   
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
@@ -40,7 +40,8 @@ while running:
             vy = y2 - y1           
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
-                #k.crtaj(screen)
+                k.crtaj(screen)
+                print("kocka")
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
