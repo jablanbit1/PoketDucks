@@ -17,7 +17,7 @@ class Patkica:
 
     def plivaj(self):
         self.x += self.vx
-                     
+       
                 
 
 g = 0.4
@@ -43,4 +43,4 @@ class Kockica:
     def mrdaj(self):
         self.x += self.vx
         self.y += self.vy
-    
+     
