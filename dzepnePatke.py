@@ -31,7 +31,7 @@ class Kockica:
         self.y = y
         self.vx = vx
         self.vy = vy
-        self.a = 5
+        self.a = 20
         
     def crtaj(self, pozadina):
         a = self.a
