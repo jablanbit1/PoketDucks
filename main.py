@@ -15,8 +15,8 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 50, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 50, 30)
 
-potez1 = True
-potez2 = False
+potez1 = False
+potez2 = True
 inklik = False
 kockicaa = False
 
@@ -43,12 +43,15 @@ while running:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
                 kockicaa = True
+            if potez2:
+                k = Kockica(patkica2.x, patkica2.y, vx, vy)
+                k.crtaj(screen)
+                kockicaa = True
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
     if kockicaa:
         k.crtaj(screen)
-    #mkTeren(SCREEN_WIDTH, SCREEN_HEIGHT, screen)
     
     pg.display.flip()
     clock.tick(60)
