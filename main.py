@@ -20,11 +20,14 @@ potez2 = True
 potez1 = False
 inklik = False
 kockicaa = False
-x1=0
-y1=0
+x1 = 0
+y1 = 0
+
+sledeci = 2
+
 while running:
     screen.fill((200, 200, 240))
-   
+    
     for event in pg.event.get():
         print(event.key)
         tren = pg.mouse.get_pos()
@@ -35,16 +38,21 @@ while running:
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
             y1 = poz1[1]
-            
             inklik = True
         if potez1:
             kreni(patkica1, event)
         if potez2:
             kreni(patkica2, event)    
             if potez1:
+<<<<<<< HEAD
                     pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1-tren[0]), patkica1.y + (y1-tren[1])), 6)
             if potez2:
                     pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1-tren[0]), patkica2.y + (y1-tren[1])), 6)
+=======
+                    pg.draw.line(screen, (20, 20, 20), (patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
+            if potez2:
+                    pg.draw.line(screen, (20, 20, 20), (patkica2.x, patkica2.y), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
+>>>>>>> c1da88909a04bbcad8fa66315f9d4bb3d36fde1b
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
             x2 = poz2[0]
@@ -55,22 +63,42 @@ while running:
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
-
                 kockicaa = True
+                potez1 = False
+                sledeci = 2
+                
             if potez2:
                 k = Kockica(patkica2.x, patkica2.y, vx, vy)
                 k.crtaj(screen)
                 kockicaa = True
+                potez2 = False
+                sledeci = 1
+                
     
+
+    Teren = Pravougaonik(SCREEN_WIDTH, 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
+
+    pozadina(sky_surface, (0, 0))
+    pozadina(ground_surface, (0, 600))
+
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
+    
     if kockicaa:
         k.crtaj(screen)
         k.mrdaj()
         k.gravitacija()
-        #if k.x < 0 or k.x > SCREEN_WIDTH or k.y > SCREEN_HEIGHT:
-            
+        if k.x < 0 or k.x > SCREEN_WIDTH or k.y > SCREEN_HEIGHT:
+            if sledeci == 1:
+                potez1 = True
+                pass
+            if sledeci == 2:
+                potez2 = True
+                pass
         
+    
+                    
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     
