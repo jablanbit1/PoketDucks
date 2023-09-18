@@ -15,6 +15,15 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
+#Dizajn
+sky_surface = pg.image.load('slike/Pozadina-nebo.jpg')
+ground_surface = pg.image.load('slike/more.png')
+
+
+#patkica1 = 
+
+
+
 potez2 = False
 potez1 = True
 inklik = False
@@ -23,6 +32,11 @@ x1 = 0
 y1 = 0
 
 sledeci = 2
+
+
+
+def pozadina(slika, koor):
+    screen.blit(slika, koor)
 
 while running:
     screen.fill((200, 200, 240))

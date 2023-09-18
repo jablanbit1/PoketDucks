@@ -10,6 +10,7 @@ class Patkica:
         self.hp = 100
         self.r1 = r1
         #self.r2 = r2
+        #self.patka_surface = pg.image.load('slike/patka.jpg')
 
 
     def crtaj(self, pozadina):
@@ -20,6 +21,7 @@ class Patkica:
         
     def puckaj(self):
         pass              
+
                 
 
 g = 0.4
