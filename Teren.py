@@ -1,5 +1,5 @@
 import pygame
-from PoketDucks import main
+
 
 
 class Pravougaonik:
@@ -7,17 +7,15 @@ class Pravougaonik:
         self.length = length
         self.height = height
     
-    def crtanje(self):
-        pygame.draw.rectangle(0, 0, self.length, self.height)
+    def crtanje(self, pozadina):
+        pygame.draw.rect(pozadina,0, 0, self.length, self.height)
 
 
 
 
-def main():
+def mkTeren(SCREEN_WIDTH, SCREEN_HEIGHT, pozadina):
     Teren = Pravougaonik(SCREEN_WIDTH, SCREEN_HEIGHT)
-    Teren.crtanje()
+    Teren.crtanje(pozadina)
 
 
 
-if __name__ == "__main__":
-    main()
