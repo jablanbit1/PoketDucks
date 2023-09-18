@@ -15,16 +15,26 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
+<<<<<<< HEAD
 potez1 = True
 potez2 = False
 inklik = False
 kockicaa = False
 
 
+=======
+potez2 = False
+potez1 = True
+inklik = False
+kockicaa = False
+x1=0
+y1=0
+>>>>>>> 10ee7ff6e54ddcaac9f1c0e20ec6ad0a37b84fa7
 while running:
     screen.fill((200, 200, 240))
     
     for event in pg.event.get():
+        tren = pg.mouse.get_pos()
         if event.type == pg.QUIT:
             pg.quit()
             quit()
@@ -32,7 +42,13 @@ while running:
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
             y1 = poz1[1]
+            
             inklik = True
+        if inklik:
+            if potez1:
+                    pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1-tren[0]), patkica1.y + (y1-tren[1])))
+            if potez2:
+                    pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1-tren[0]), patkica2.x + (y1-tren[1])))
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
             x2 = poz2[0]
@@ -43,6 +59,7 @@ while running:
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
+
                 kockicaa = True
                 
             if potez2:
