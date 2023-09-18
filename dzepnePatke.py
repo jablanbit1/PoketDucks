@@ -10,12 +10,12 @@ class Patkica:
         self.hp = 100
         self.r1 = r1
         #self.r2 = r2
-        #self.patka_surface = pg.image.load('slike/patka.jpg')
+        self.patka_surface = pg.image.load('slike/Patka.png')
 
 
     def crtaj(self, pozadina):
-        pg.draw.circle(pozadina, (255, 255, 0), (self.x, self.y),self.r1 )
-
+        #pg.draw.circle(pozadina, (255, 255, 0), (self.x, self.y),self.r1 
+        self.patka_surface
     def plivaj(self):
         self.x += self.vx
         

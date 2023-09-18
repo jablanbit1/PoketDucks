@@ -12,7 +12,8 @@ screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
 
-patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
+
+patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 200, 30 )
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
 #Dizajn
