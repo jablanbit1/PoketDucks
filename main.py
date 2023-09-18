@@ -1,5 +1,6 @@
 import pygame as pg
 from dzepnePatke import *
+from Teren import *
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -39,10 +40,11 @@ while running:
             vy = y2 - y1           
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
-                k.crtaj(screen)
+                #k.crtaj(screen)
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
+    #mkTeren(SCREEN_WIDTH, SCREEN_HEIGHT, screen)
     
     
        
