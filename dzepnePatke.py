@@ -13,11 +13,36 @@ class Patkica:
 
 
     def crtaj(self, pozadina):
-        pg.draw.circle(pozadina, (0, 255, 255), (self.x, self.y),self.r1 )
+        pg.draw.circle(pozadina, (255, 255, 0), (self.x, self.y),self.r1 )
 
     def plivaj(self):
         self.x += self.vx
         
-    def puckaj():
-        pass
-      
+    def puckaj(self):
+        pass              
+                
+
+g = 0.3
+
+class Kockica:
+    
+    def __init__(self, x, y, vx, vy):
+        self.x = x
+        self.y = y
+        self.vx = vx
+        self.vy = vy
+        self.a = 5
+        
+    def crtaj(self, pozadina):
+        a = self.a
+        x = self.x
+        y = self.y
+        pg.draw.rect(pozadina, (0, 255, 255), pg.Rect(x + a / 2, y + a / 2, a, a))
+        
+    def gravitacija(self):
+        self.vy += g
+        
+    def mrdaj(self):
+        self.x += self.vx
+        self.y += self.vy
+    
