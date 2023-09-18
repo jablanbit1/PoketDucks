@@ -37,7 +37,7 @@ class Kockica:
         a = self.a
         x = self.x
         y = self.y
-        pg.draw.rect(pozadina, (0, 255, 255), pg.Rect(x + a / 2, y + a / 2, a, a))
+        pg.draw.rect(pozadina, (0, 255, 255), pg.Rect(x - a / 2, y - a / 2, a, a))
         pg.display.flip()
         
     def gravitacija(self):
