@@ -1,6 +1,6 @@
 import pygame as pg
 from dzepnePatke import *
-from Teren import *
+from Teren import Pravougaonik
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -22,7 +22,7 @@ kockicaa = False
 
 while running:
     screen.fill((200, 200, 240))
-    
+   
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
@@ -52,6 +52,8 @@ while running:
     patkica2.crtaj(screen)
     if kockicaa:
         k.crtaj(screen)
+    Teren = Pravougaonik(SCREEN_WIDTH, 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
     
     pg.display.flip()
     clock.tick(60)

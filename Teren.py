@@ -1,5 +1,5 @@
 import pygame
-from main import *
+#from main import *
 
 
 class Pravougaonik:
@@ -7,17 +7,9 @@ class Pravougaonik:
         self.length = length
         self.height = height
     
-    def crtanje(self, boja):
-        pygame.draw.rectangle(screen, boja, [0, 0, self.length, self.height])
-        pygame.display.update()
+    def crtanje(self, screen, sw):
+        #pygame.draw.rect(screen, (0, 0, 255), [0, 0, self.length, self.height])
+        pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(0, sw, self.length, self.height))
+        #pygame.display.update()
 
 
-
-def main():
-    Teren = Pravougaonik(SCREEN_WIDTH, SCREEN_HEIGHT)
-    Teren.crtanje(boja = blue)
-
-
-
-if __name__ == "__main__":
-    main()
