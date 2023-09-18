@@ -15,15 +15,23 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
+sky_surface = pg.image.load('slike/Pozadina-nebo.jpg')
+ground_surface = pg.image.load('slike/more.png')
+
 potez1 = False
 potez2 = True
 inklik = False
 kockicaa = False
 
+def pozadina(slika, koor):
+    screen.blit(slika, koor)
+
 while running:
     screen.fill((200, 200, 240))
    
     for event in pg.event.get():
+            
+
         if event.type == pg.QUIT:
             pg.quit()
             quit()
@@ -48,6 +56,13 @@ while running:
                 k.crtaj(screen)
                 kockicaa = True
     
+
+    Teren = Pravougaonik(SCREEN_WIDTH, 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
+
+    pozadina(sky_surface, (0, 0))
+    pozadina(ground_surface, (0, 600))
+
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
     if kockicaa:
@@ -57,8 +72,7 @@ while running:
         #if k.x < 0 or k.x > SCREEN_WIDTH or k.y > SCREEN_HEIGHT:
             
         
-    Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT-100)
+    
     
     pg.display.flip()
     clock.tick(60)
