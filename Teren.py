@@ -1,5 +1,5 @@
 import pygame
-from PoketDucks.main import *
+from main import *
 
 
 class Pravougaonik:
