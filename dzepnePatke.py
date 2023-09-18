@@ -17,9 +17,7 @@ class Patkica:
 
     def plivaj(self):
         self.x += self.vx
-        
-    def puckaj(self):
-        pass              
+                     
                 
 
 g = 0.4

@@ -1,6 +1,7 @@
 import pygame as pg
 from dzepnePatke import *
 from Teren import Pravougaonik
+from kretnja import kreni
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -15,8 +16,8 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
-potez2 = False
-potez1 = True
+potez2 = True
+potez1 = False
 inklik = False
 kockicaa = False
 x1=0
@@ -25,6 +26,7 @@ while running:
     screen.fill((200, 200, 240))
    
     for event in pg.event.get():
+        print(event.key)
         tren = pg.mouse.get_pos()
         if event.type == pg.QUIT:
             pg.quit()
@@ -35,11 +37,14 @@ while running:
             y1 = poz1[1]
             
             inklik = True
-        if inklik:
+        if potez1:
+            kreni(patkica1, event)
+        if potez2:
+            kreni(patkica2, event)    
             if potez1:
-                    pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1-tren[0]), patkica1.y + (y1-tren[1])))
+                    pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1-tren[0]), patkica1.y + (y1-tren[1])), 6)
             if potez2:
-                    pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1-tren[0]), patkica2.x + (y1-tren[1])))
+                    pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1-tren[0]), patkica2.y + (y1-tren[1])), 6)
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
             x2 = poz2[0]
