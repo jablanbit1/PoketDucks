@@ -1,6 +1,6 @@
 import pygame as pg
 from dzepnePatke import *
-from Teren import *
+from Teren import Pravougaonik
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -42,17 +42,14 @@ while running:
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
-<<<<<<< HEAD
-                print("kocka")
-=======
                 kockicaa = True
->>>>>>> 854ad189185b79ef87c9cb3b0b267ea348d88c63
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
     if kockicaa:
         k.crtaj(screen)
-    #mkTeren(SCREEN_WIDTH, SCREEN_HEIGHT, screen)
+    Teren = Pravougaonik(SCREEN_WIDTH, 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
     
     pg.display.flip()
     clock.tick(60)
