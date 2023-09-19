@@ -16,7 +16,7 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
-<<<<<<< HEAD
+
 #Dizajn
 sky_surface = pg.image.load('slike/NeboPSSL.png')
 ground_surface = pg.image.load('slike/more.png')
