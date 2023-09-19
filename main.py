@@ -16,6 +16,11 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
+#Dizajn
+sky_surface = pg.image.load('slike/NeboPSSL.png').convert_alpha()
+ground_surface = pg.image.load('slike/more.png').convert_alpha()
+ground_surface_half = pg.image.load('slike/morePola.png').convert_alpha()
+
 potez1 = True
 potez2 = False
 
@@ -28,10 +33,17 @@ y1 = 0
 
 sledeci = 2
 
+
+def pozadina(slika, koor):
+    screen.blit(slika, koor)
+
+
 while running:
     screen.fill((200, 200, 240))
     
     #print('potez1: ', potez1)
+    pozadina(sky_surface, (0, 0))
+    pozadina(ground_surface, (0, 600))
     if inklik:
         if potez1:
             pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
@@ -82,10 +94,10 @@ while running:
     
 
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT-100)
+    #Teren.crtanje(screen, SCREEN_HEIGHT-100)
+    
+    
 
-    #pozadina(sky_surface, (0, 0))
-    #pozadina(ground_surface, (0, 600))
 
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
@@ -105,7 +117,7 @@ while running:
     
                     
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT-100)
+    #Teren.crtanje(screen, SCREEN_HEIGHT-100)
     
     pg.display.flip()
     clock.tick(60)
