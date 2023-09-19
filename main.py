@@ -13,17 +13,18 @@ screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
 
-patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
-patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
+#patkice
+patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30, 0)
+patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30, 1)
 
-<<<<<<< HEAD
 #Dizajn
 sky_surface = pg.image.load('slike/NeboPSSL.png')
 ground_surface = pg.image.load('slike/more.png')
 ground_surface_half = pg.image.load('slike/morePola.png')
 
 
-#patkica1 = 
+
+
 
 
 
@@ -36,12 +37,11 @@ kockicaa = False
 x1 = 0
 y1 = 0
 
-
 sledeci = 2
 
 
 
-def pozadina(slika, koor):
+def prikaz(slika, koor):
     screen.blit(slika, koor)
 
 while running:
@@ -93,20 +93,28 @@ while running:
                 kockicaa = True
                 potez2 = False
                 sledeci = 1
-                
+
+            #Kretanje patke
+    
+            
     
 
+    """
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
-    pozadina(sky_surface, (0, 0))
-    pozadina(ground_surface, (0, 600))
+    """
+    prikaz(sky_surface, (0, 0))
+    prikaz(ground_surface, (-10, 600))
+    visina = 530
+    promena = 1
+    if visina < 500 or visina > 530:
+        promena*=-1
+    visina+=1*promena
+    prikaz(patkica1.crtaj(), (100, visina))
+    prikaz(patkica2.crtaj(), (840, visina))
+ 
 
-    Patka1 = Patkica(0, 0, 0)
-    Patka2 = Patkica(0, 0, 1)
-    
-    
-    pozadina(sky_surface, (0, 0))
-    pozadina(ground_surface, (-10, 600))
+
 
     if kockicaa:
         k.crtaj(screen)
@@ -120,9 +128,10 @@ while running:
                 potez2 = True
                 pass
 
-    screen.blit(Patka1.crtaj(), (100, 550))
-    screen.blit(Patka2.crtaj(), (840, 550))
-    pozadina(ground_surface_half, (-10, 640))
+    prikaz(ground_surface_half, (-10, 640))
+    #Animacija mora i patke kako pliva
+
+    
 
   
 
@@ -133,12 +142,8 @@ while running:
 
 
 
-    #Animacija mora i patke kako pliva
 
 
-
-
-    
 
 
 

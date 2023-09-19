@@ -2,7 +2,7 @@ import pygame as pg
 
 class Patkica:
 
-    def __init__(self, x, y, r):
+    def __init__(self, x, y, r, s):
         self.x = x
         self.y = y
         self.vx = 0
@@ -10,7 +10,7 @@ class Patkica:
         self.hp = 100
         self.r = r
         #self.r2 = r2
-        if r == 0:
+        if s == 0:
             self.patka_surface = pg.image.load('slike/patka_editovana.png')
         else: 
             self.patka_surface = pg.image.load('slike/patka1_editovana.png')
@@ -22,14 +22,10 @@ class Patkica:
     
     def plivaj(self):
         self.x += self.vx
-<<<<<<< HEAD
         
     def puckaj(self):
         pass              
 
-=======
-       
->>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
                 
 
 g = 0.4
