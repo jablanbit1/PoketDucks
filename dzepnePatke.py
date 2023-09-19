@@ -44,3 +44,5 @@ class Kockica:
     def mrdaj(self):
         self.x += self.vx
         self.y += self.vy
+        
+        

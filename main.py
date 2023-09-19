@@ -67,7 +67,7 @@ while running:
         if event.type == pg.QUIT:
             pg.quit()
             quit()
-
+        
         if event.type == pg.MOUSEBUTTONDOWN and not inklik and (potez1 or potez2):
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
@@ -86,8 +86,8 @@ while running:
             x2 = poz2[0]
             y2 = poz2[1]
             inklik = False
-            vx = x2 - x1
-            vy = y2 - y1           
+            vx = (x2 - x1)/1.6
+            vy = (y2 - y1)/1.6           
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
@@ -136,7 +136,6 @@ while running:
             potez1 = False
             sledeci = 1
                 
-    print(sledeci)
     
     hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
     hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))
