@@ -22,12 +22,6 @@ sky_surface = pg.image.load('slike/NeboPSSL.png')
 ground_surface = pg.image.load('slike/more.png')
 ground_surface_half = pg.image.load('slike/morePola.png')
 
-
-
-
-
-
-
 potez2 = False
 potez1 = True
 potez2 = False
@@ -37,15 +31,28 @@ kockicaa = False
 x1 = 0
 y1 = 0
 
+#test komit lol
+
 sledeci = 2
 
-
+font = pg.font.Font(None, 36)
+hp1 = font.render('Player 1: ', True, (0, 0, 0))
+hp2 = font.render('Player 2: ', True, (0, 0, 0))
 
 def prikaz(slika, koor):
     screen.blit(slika, koor)
 
 while running:
     screen.fill((200, 200, 240))
+    prikaz(sky_surface, (0, 0))
+    prikaz(ground_surface, (-10, 600))
+    visina = 530
+    promena = 1
+    if visina < 500 or visina > 530:
+        promena*=-1
+    visina+=1*promena
+    prikaz(patkica1.crtaj(screen), ( patkica1.x ,visina))
+    prikaz(patkica2.crtaj(screen), (patkica2.x, visina))
     
     #print('potez1: ', potez1)
     if inklik:
@@ -103,18 +110,7 @@ while running:
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     """
-    prikaz(sky_surface, (0, 0))
-    prikaz(ground_surface, (-10, 600))
-    visina = 530
-    promena = 1
-    if visina < 500 or visina > 530:
-        promena*=-1
-    visina+=1*promena
-    prikaz(patkica1.crtaj(), (100, visina))
-    prikaz(patkica2.crtaj(), (840, visina))
- 
-
-
+   
 
     if kockicaa:
         k.crtaj(screen)
@@ -123,38 +119,38 @@ while running:
         if k.x < 0 or k.x > SCREEN_WIDTH or k.y > SCREEN_HEIGHT:
             if sledeci == 1:
                 potez1 = True
-                pass
             if sledeci == 2:
                 potez2 = True
-                pass
+        if abs(k.x - patkica1.x) < (k.a + patkica1.r) / 2 and abs(k.y - patkica1.y) < (k.a + patkica1.r) / 2 and sledeci == 1:
+            patkica1.hp -= 10
+            kockicaa = False
+            potez1 = True
+            potez2 = False
+            sledeci = 2
 
-    prikaz(ground_surface_half, (-10, 640))
-    #Animacija mora i patke kako pliva
-
+        if abs(k.x - patkica2.x) < (k.a + patkica2.r) / 2 and abs(k.y - patkica2.y) < (k.a + patkica2.r) / 2 and sledeci == 2:
+            patkica2.hp -= 10
+            kockicaa = False
+            potez2 = True
+            potez1 = False
+            sledeci = 1
+                
+    print(sledeci)
     
-
-  
-
-    """
+    hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
+    hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))
+                    
+    #Teren = Pravougaonik(SCREEN_WIDTH, 100)
+    #Teren.crtanje(screen, SCREEN_HEIGHT - 100)
+    
+    screen.blit(hp1, (30, 30))
+    screen.blit(hp2, (SCREEN_WIDTH - 200, 30))
+    
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
-    """
-
-
-
-
-
-
-
-
-
-        
     
-    """                
-    Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT-100)
-    """
 
+    
     pg.display.flip()
     clock.tick(60)
     
