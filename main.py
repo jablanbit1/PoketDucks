@@ -2,6 +2,9 @@ import pygame as pg
 from dzepnePatke import *
 from Teren import Pravougaonik
 from kretnja import kreni
+from dizajn.dizajn import *
+import random
+
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -31,7 +34,10 @@ inklik = False
 kockicaa = False
 x1 = 0
 y1 = 0
+visina1 = random.randint(501, 530)
+visina2 = random.randint(501, 530)
 
+<<<<<<< HEAD
 n = 11
 
 x = SCREEN_WIDTH // 2
@@ -50,6 +56,10 @@ for i in range(n):
 for i in range(n):
     for j in range(n):
         led[i][j].nacrtaj(screen)
+=======
+promena2 = 1
+promena1 = 1
+>>>>>>> 82539b3c3e3b3fdcf9aba5b513e1f1db1fed0bd0
 
 sledeci = 2
 
@@ -125,6 +135,24 @@ while running:
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     """
+<<<<<<< HEAD
+=======
+
+    prikaz(sky_surface, (0, 0))
+    prikaz(ground_surface, (-10, 600))
+
+    if visina1 <= 500 or visina1 >= 540:
+        promena1 *= -1
+    visina1 += 1*promena1
+
+    if visina2 <= 500 or visina2 >= 540:
+        promena2 *= -1
+    visina2 += 1*promena2
+
+    prikaz(patkica1.crtaj(), (100, visina1))
+    prikaz(patkica2.crtaj(), (840, visina2))
+
+>>>>>>> 82539b3c3e3b3fdcf9aba5b513e1f1db1fed0bd0
 
     if kockicaa:
         k.crtaj(screen)
