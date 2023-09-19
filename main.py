@@ -24,16 +24,14 @@ kockicaa = False
 x1 = 0
 y1 = 0
 
+#test komit lol
 
 sledeci = 2
 
 while running:
     screen.fill((200, 200, 240))
     
-<<<<<<< HEAD
-=======
     #print('potez1: ', potez1)
->>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
     if inklik:
         if potez1:
             pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
@@ -51,23 +49,8 @@ while running:
             x1 = poz1[0]
             y1 = poz1[1]
             inklik = True
-<<<<<<< HEAD
-        if event.type == pg.K_LEFT:
-            print('levo')
-            if potez1:
-                patkica1.x -= 15
-            if potez2:
-                patkica2.x -= 15
-        if event.type == pg.K_RIGHT:
-            print('desno')
-            if potez1:
-                patkica1.x += 15
-            if potez2:
-                patkica2.x += 15
-=======
         keys = pg.key.get_pressed()
         if potez1 :
->>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
             
             kreni(patkica1, event, keys)
 
