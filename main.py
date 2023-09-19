@@ -28,6 +28,10 @@ y1 = 0
 
 sledeci = 2
 
+font = pg.font.Font(None, 36)
+hp1 = font.render('Player 1: ', True, (0, 0, 0))
+hp2 = font.render('Player 2: ', True, (0, 0, 0))
+
 while running:
     screen.fill((200, 200, 240))
     
@@ -96,15 +100,21 @@ while running:
         if k.x < 0 or k.x > SCREEN_WIDTH or k.y > SCREEN_HEIGHT:
             if sledeci == 1:
                 potez1 = True
-                pass
             if sledeci == 2:
                 potez2 = True
-                pass
-        
+        if abs(k.x - patkica1.x) < (k.a + patkica1.r1) / 2 and abs(k.y - patkica1.y) < (k.a + patkica1.r1) / 2 and sledeci == 1:
+            patkica1.hp -= 10
+        if abs(k.x - patkica2.x) < (k.a + patkica2.r1) / 2 and abs(k.y - patkica2.y) < (k.a + patkica2.r1) / 2 and sledeci == 2:
+            patkica2.hp -= 10
     
+    hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
+    hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))
                     
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT-100)
+    Teren.crtanje(screen, SCREEN_HEIGHT - 100)
+    
+    screen.blit(hp1, (30, 30))
+    screen.blit(hp2, (SCREEN_WIDTH - 200, 30))
     
     pg.display.flip()
     clock.tick(60)
