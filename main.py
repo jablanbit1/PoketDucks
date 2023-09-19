@@ -44,11 +44,18 @@ while running:
             x1 = poz1[0]
             y1 = poz1[1]
             inklik = True
-        
-        #if potez1:
-            #kreni(patkica1, event)
-        #if potez2:
-            #kreni(patkica2, event)    
+        if event.type == pg.K_LEFT:
+            print('levo')
+            if potez1:
+                patkica1.x -= 15
+            if potez2:
+                patkica2.x -= 15
+        if event.type == pg.K_RIGHT:
+            print('desno')
+            if potez1:
+                patkica1.x += 15
+            if potez2:
+                patkica2.x += 15
             
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
