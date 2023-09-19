@@ -28,8 +28,6 @@ ground_surface_half = pg.image.load('slike/morePola.png')
 
 
 potez2 = False
-=======
->>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
 potez1 = True
 potez2 = False
 
@@ -100,12 +98,8 @@ while running:
 
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
-
-<<<<<<< HEAD
-=======
-    #pozadina(sky_surface, (0, 0))
-    #pozadina(ground_surface, (0, 600))
->>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
+    pozadina(sky_surface, (0, 0))
+    pozadina(ground_surface, (0, 600))
 
     Patka1 = Patkica(0, 0, 0)
     Patka2 = Patkica(0, 0, 1)
