@@ -12,13 +12,13 @@ screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
 
-
-patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 200, 30 )
+patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
 #Dizajn
-sky_surface = pg.image.load('slike/Pozadina-nebo.jpg')
+sky_surface = pg.image.load('slike/NeboPSSL.png')
 ground_surface = pg.image.load('slike/more.png')
+ground_surface_half = pg.image.load('slike/morePola.png')
 
 
 #patkica1 = 
@@ -83,12 +83,14 @@ while running:
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
 
-    pozadina(sky_surface, (0, 0))
-    pozadina(ground_surface, (0, 600))
 
-    patkica1.crtaj(screen)
-    patkica2.crtaj(screen)
+    Patka1 = Patkica(0, 0, 0)
+    Patka2 = Patkica(0, 0, 1)
     
+    
+    pozadina(sky_surface, (0, 0))
+    pozadina(ground_surface, (-10, 600))
+
     if kockicaa:
         k.crtaj(screen)
         k.mrdaj()
@@ -100,12 +102,37 @@ while running:
             if sledeci == 2:
                 potez2 = True
                 pass
+
+    screen.blit(Patka1.crtaj(), (100, 550))
+    screen.blit(Patka2.crtaj(), (840, 550))
+    pozadina(ground_surface_half, (-10, 640))
+
+  
+
+    """
+    patkica1.crtaj(screen)
+    patkica2.crtaj(screen)
+    """
+
+
+
+    #Animacija mora i patke kako pliva
+
+
+
+
+    
+
+
+
+
         
     
-                    
+    """                
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
-    
+    """
+
     pg.display.flip()
     clock.tick(60)
     

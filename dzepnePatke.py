@@ -2,20 +2,24 @@ import pygame as pg
 
 class Patkica:
 
-    def __init__(self, x, y, r1):
+    def __init__(self, x, y, r):
         self.x = x
         self.y = y
         self.vx = 0
         self.vy = 0
         self.hp = 100
-        self.r1 = r1
+        self.r = r
         #self.r2 = r2
-        self.patka_surface = pg.image.load('slike/Patka.png')
+        if r == 0:
+            self.patka_surface = pg.image.load('slike/patka_editovana.png')
+        else: 
+            self.patka_surface = pg.image.load('slike/patka1_editovana.png')
 
 
-    def crtaj(self, pozadina):
+    def crtaj(self):
         #pg.draw.circle(pozadina, (255, 255, 0), (self.x, self.y),self.r1 
-        self.patka_surface
+        return self.patka_surface
+    
     def plivaj(self):
         self.x += self.vx
         
