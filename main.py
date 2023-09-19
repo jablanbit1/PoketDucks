@@ -37,13 +37,14 @@ y1 = 0
 visina1 = random.randint(501, 530)
 visina2 = random.randint(501, 530)
 
-<<<<<<< HEAD
 n = 11
 
 x = SCREEN_WIDTH // 2
 x -= 5 * 40
 y = SCREEN_HEIGHT - 10.5 * 40
 
+
+"""
 led = []
 for i in range(n):
     ledic = []
@@ -56,10 +57,11 @@ for i in range(n):
 for i in range(n):
     for j in range(n):
         led[i][j].nacrtaj(screen)
-=======
+        
+"""
+
 promena2 = 1
 promena1 = 1
->>>>>>> 82539b3c3e3b3fdcf9aba5b513e1f1db1fed0bd0
 
 sledeci = 2
 
@@ -82,6 +84,8 @@ while running:
     visina+=1*promena
     prikaz(patkica1.crtaj(screen), ( patkica1.x ,visina))
     prikaz(patkica2.crtaj(screen), (patkica2.x, visina))
+    prikaz(sky_surface, (0, 0))
+    prikaz(ground_surface, (-10, 600))
     
     #print('potez1: ', potez1)
     if inklik:
@@ -135,11 +139,8 @@ while running:
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     """
-<<<<<<< HEAD
-=======
 
-    prikaz(sky_surface, (0, 0))
-    prikaz(ground_surface, (-10, 600))
+
 
     if visina1 <= 500 or visina1 >= 540:
         promena1 *= -1
@@ -149,10 +150,9 @@ while running:
         promena2 *= -1
     visina2 += 1*promena2
 
-    prikaz(patkica1.crtaj(), (100, visina1))
-    prikaz(patkica2.crtaj(), (840, visina2))
+    #prikaz(patkica1.crtaj(), (100, visina1))
+    #prikaz(patkica2.crtaj(), (840, visina2))
 
->>>>>>> 82539b3c3e3b3fdcf9aba5b513e1f1db1fed0bd0
 
     if kockicaa:
         k.crtaj(screen)
