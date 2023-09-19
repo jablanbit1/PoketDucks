@@ -45,6 +45,10 @@ font = pg.font.Font(None, 36)
 fontt = pg.font.Font(None, 72)
 hp1 = font.render('Player 1: ', True, (0, 0, 0))
 hp2 = font.render('Player 2: ', True, (0, 0, 0))
+pg.mixer.music.load("RELJA TORINNO i POPOVSKA - PROBLEMA (tekst).mp3")
+pg.mixer.music.set_volume(0.5)
+pg.mixer.music.play(-1)
+
 
 def prikaz(slika, koor):
     screen.blit(slika, koor)
@@ -121,17 +125,21 @@ while running:
     prikaz(sky_surface, (0, 0))
     prikaz(ground_surface, (-10, 600))
 
-    if visina1 <= 500 or visina1 >= 540:
+    promena1 = random.random()
+    promena2 = random.random()  
+
+    if visina1 < 520 or visina1 > 540:
         promena1 *= -1
-    visina1 += 1*promena1
+    visina1 -= promena1
+    print ("Visina: ", visina1, "\nPromena: ", promena1)
 
-    if visina2 <= 500 or visina2 >= 540:
+    if visina2 < 500 or visina2 > 540:
         promena2 *= -1
-    visina2 += 1*promena2
+    visina2 -= promena2
 
-    prikaz(patkica1.crtaj(), (100, visina1))
-    prikaz(patkica2.crtaj(), (840, visina2))
-
+    prikaz(patkica1.crtaj(screen), (100, visina1))
+    prikaz(patkica2.crtaj(screen), (840, visina2))
+    
 
     if kockicaa:
         k.crtaj(screen)
@@ -156,7 +164,6 @@ while running:
             potez1 = False
             sledeci = 1
                 
-    print(sledeci)
     
     hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
     hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))
@@ -182,7 +189,7 @@ while running:
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
-    
+    prikaz(ground_surface_half, (0, 650))
 
     
     pg.display.flip()
