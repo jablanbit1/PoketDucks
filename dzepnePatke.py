@@ -22,10 +22,14 @@ class Patkica:
     
     def plivaj(self):
         self.x += self.vx
+<<<<<<< HEAD
         
     def puckaj(self):
         pass              
 
+=======
+       
+>>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
                 
 
 g = 0.4
@@ -51,4 +55,4 @@ class Kockica:
     def mrdaj(self):
         self.x += self.vx
         self.y += self.vy
-    
+     

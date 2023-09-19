@@ -1,6 +1,7 @@
 import pygame as pg
 from dzepnePatke import *
 from Teren import Pravougaonik
+from kretnja import kreni
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -15,6 +16,7 @@ running = True
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30)
 
+<<<<<<< HEAD
 #Dizajn
 sky_surface = pg.image.load('slike/NeboPSSL.png')
 ground_surface = pg.image.load('slike/more.png')
@@ -26,11 +28,16 @@ ground_surface_half = pg.image.load('slike/morePola.png')
 
 
 potez2 = False
+=======
+>>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
 potez1 = True
+potez2 = False
+
 inklik = False
 kockicaa = False
 x1 = 0
 y1 = 0
+
 
 sledeci = 2
 
@@ -42,21 +49,32 @@ def pozadina(slika, koor):
 while running:
     screen.fill((200, 200, 240))
     
+    #print('potez1: ', potez1)
+    if inklik:
+        if potez1:
+            pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
+        if potez2:
+            pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
+
     for event in pg.event.get():
         tren = pg.mouse.get_pos()
         if event.type == pg.QUIT:
             pg.quit()
             quit()
+
         if event.type == pg.MOUSEBUTTONDOWN and not inklik and (potez1 or potez2):
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
             y1 = poz1[1]
             inklik = True
-        if inklik:
-            if potez1:
-                    pg.draw.line(screen, (20, 20, 20), (patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
-            if potez2:
-                    pg.draw.line(screen, (20, 20, 20), (patkica2.x, patkica2.y), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
+        keys = pg.key.get_pressed()
+        if potez1 :
+            
+            kreni(patkica1, event, keys)
+
+        if potez2 :
+            kreni(patkica2, event, keys)
+
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
             x2 = poz2[0]
@@ -83,6 +101,11 @@ while running:
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
 
+<<<<<<< HEAD
+=======
+    #pozadina(sky_surface, (0, 0))
+    #pozadina(ground_surface, (0, 600))
+>>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
 
     Patka1 = Patkica(0, 0, 0)
     Patka2 = Patkica(0, 0, 1)
