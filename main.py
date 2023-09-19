@@ -29,7 +29,6 @@ sledeci = 2
 while running:
     screen.fill((200, 200, 240))
     
-    print('potez1: ', potez1)
     if inklik:
         if potez1:
             pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
