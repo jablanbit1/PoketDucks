@@ -34,6 +34,7 @@ while running:
     if inklik:
         if potez1:
             pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
+            
         if potez2:
             pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
 
