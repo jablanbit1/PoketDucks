@@ -2,6 +2,9 @@ import pygame as pg
 from dzepnePatke import *
 from Teren import Pravougaonik
 from kretnja import kreni
+from dizajn.dizajn import *
+import random
+
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -23,11 +26,6 @@ ground_surface = pg.image.load('slike/more.png')
 ground_surface_half = pg.image.load('slike/morePola.png')
 
 
-
-
-
-
-
 potez2 = False
 potez1 = True
 potez2 = False
@@ -36,9 +34,13 @@ inklik = False
 kockicaa = False
 x1 = 0
 y1 = 0
+visina1 = random.randint(501, 530)
+visina2 = random.randint(501, 530)
+
+promena2 = 1
+promena1 = 1
 
 sledeci = 2
-
 
 
 def prikaz(slika, koor):
@@ -103,17 +105,20 @@ while running:
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     """
+
     prikaz(sky_surface, (0, 0))
     prikaz(ground_surface, (-10, 600))
-    visina = 530
-    promena = 1
-    if visina < 500 or visina > 530:
-        promena*=-1
-    visina+=1*promena
-    prikaz(patkica1.crtaj(), (100, visina))
-    prikaz(patkica2.crtaj(), (840, visina))
- 
 
+    if visina1 <= 500 or visina1 >= 540:
+        promena1 *= -1
+    visina1 += 1*promena1
+
+    if visina2 <= 500 or visina2 >= 540:
+        promena2 *= -1
+    visina2 += 1*promena2
+
+    prikaz(patkica1.crtaj(), (100, visina1))
+    prikaz(patkica2.crtaj(), (840, visina2))
 
 
     if kockicaa:
