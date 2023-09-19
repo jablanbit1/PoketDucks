@@ -15,6 +15,9 @@ pg.init()
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
+pg.mixer.music.load("RELJA_TORINNO_i_POPOVSKA_-_PROBLEMA_tekst.mp3")
+pg.mixer.music.set_volume(0.5)
+pg.mixer.music.play(-1)
 
 #patkice
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30, 0)
@@ -117,8 +120,8 @@ while running:
             x2 = poz2[0]
             y2 = poz2[1]
             inklik = False
-            vx = (x2 - x1)/1.6
-            vy = (y2 - y1)/1.6           
+            vx = (x2 - x1)/1.2
+            vy = (y2 - y1)/1.2   
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
@@ -176,10 +179,7 @@ while running:
             potez2 = True
             potez1 = False
             sledeci = 1
-<<<<<<< HEAD
                 
-=======
->>>>>>> d9ef7b0222baed0f34a3c479a093036fbdce0f2c
     
     hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
     hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))

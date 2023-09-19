@@ -45,9 +45,6 @@ class Kockica:
         self.x += self.vx
         self.y += self.vy
         
-<<<<<<< HEAD
-        
-=======
 class Santa:
     
     def __init__(self, x, y):
@@ -66,4 +63,3 @@ class Santa:
     def crash(self, kockica):
         if self.postoji and abs(self.x - kockica.x) < (self.a + kockica.a) / 2 and abs(self.y - kockica.y) < (self.a + kockica.a) / 2:
             self.postoji = False
->>>>>>> d9ef7b0222baed0f34a3c479a093036fbdce0f2c
