@@ -24,26 +24,34 @@ kockicaa = False
 x1 = 0
 y1 = 0
 
+
 sledeci = 2
 
 while running:
     screen.fill((200, 200, 240))
     
+<<<<<<< HEAD
+=======
+    #print('potez1: ', potez1)
+>>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
     if inklik:
         if potez1:
             pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
         if potez2:
             pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
+
     for event in pg.event.get():
         tren = pg.mouse.get_pos()
         if event.type == pg.QUIT:
             pg.quit()
             quit()
+
         if event.type == pg.MOUSEBUTTONDOWN and not inklik and (potez1 or potez2):
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
             y1 = poz1[1]
             inklik = True
+<<<<<<< HEAD
         if event.type == pg.K_LEFT:
             print('levo')
             if potez1:
@@ -56,7 +64,16 @@ while running:
                 patkica1.x += 15
             if potez2:
                 patkica2.x += 15
+=======
+        keys = pg.key.get_pressed()
+        if potez1 :
+>>>>>>> 8ec73038fc82c4c5b3fd08e9f6b7b9ce043bcc75
             
+            kreni(patkica1, event, keys)
+
+        if potez2 :
+            kreni(patkica2, event, keys)
+
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
             x2 = poz2[0]
@@ -81,7 +98,7 @@ while running:
     
 
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT - 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
 
     #pozadina(sky_surface, (0, 0))
     #pozadina(ground_surface, (0, 600))
@@ -104,7 +121,7 @@ while running:
     
                     
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT - 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
     
     pg.display.flip()
     clock.tick(60)
