@@ -45,4 +45,25 @@ class Kockica:
         self.x += self.vx
         self.y += self.vy
         
+<<<<<<< HEAD
         
+=======
+class Santa:
+    
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.a = 40
+        self.postoji = True
+        
+    def nacrtaj(self, pozadina):
+        if self.postoji:
+            a = self.a
+            x = self.x
+            y = self.y
+            pg.draw.rect(pozadina, (0, 255, 255), pg.Rect(x - a / 2, y - a / 2, a, a))
+        
+    def crash(self, kockica):
+        if self.postoji and abs(self.x - kockica.x) < (self.a + kockica.a) / 2 and abs(self.y - kockica.y) < (self.a + kockica.a) / 2:
+            self.postoji = False
+>>>>>>> d9ef7b0222baed0f34a3c479a093036fbdce0f2c
