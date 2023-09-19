@@ -19,14 +19,14 @@ def kreni(patkica, event, keys):
                 patkica.plivaj()"""
         
     
-        if keys[pg.K_LEFT]:
+        if keys[pg.K_LEFT] and patkica.x>0:
                 
                         pg.time.delay(200)
                         patkica.vx = -5
                         patkica.plivaj()
 
 
-        if keys[pg.K_RIGHT]:
+        if keys[pg.K_RIGHT] and patkica.x<1080:
                 
                         pg.time.delay(200)
                         patkica.vx = 5

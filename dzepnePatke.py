@@ -6,27 +6,20 @@ class Patkica:
         self.x = x
         self.y = y
         self.vx = 0
-        self.vy = 0
         self.hp = 100
         self.r = r
-        #self.r2 = r2
         if s == 0:
-            self.patka_surface = pg.image.load('slike/patka_editovana.png')
+            self.patka_surface = pg.image.load('slike/patka_editovana.png').convert_alpha()
         else: 
-            self.patka_surface = pg.image.load('slike/patka1_editovana.png')
+            self.patka_surface = pg.image.load('slike/patka1_editovana.png').convert_alpha()
 
 
-    def crtaj(self):
-        #pg.draw.circle(pozadina, (255, 255, 0), (self.x, self.y),self.r1 
+    def crtaj(self, pozadina):
+        pg.draw.circle(pozadina, (255, 255, 0), (self.x, self.y), self.r)
         return self.patka_surface
     
     def plivaj(self):
-        self.x += self.vx
-        
-    def puckaj(self):
-        pass              
-
-                
+        self.x += self.vx        
 
 g = 0.4
 
@@ -51,4 +44,3 @@ class Kockica:
     def mrdaj(self):
         self.x += self.vx
         self.y += self.vy
-     
