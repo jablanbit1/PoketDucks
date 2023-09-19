@@ -24,6 +24,7 @@ kockicaa = False
 x1 = 0
 y1 = 0
 
+#test komit lol
 
 sledeci = 2
 
