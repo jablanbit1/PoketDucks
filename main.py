@@ -73,22 +73,22 @@ fontt = pg.font.Font(None, 72)
 hp1 = font.render('Player 1: ', True, (0, 0, 0))
 hp2 = font.render('Player 2: ', True, (0, 0, 0))
 
-def prikaz(slika, koor):
-    screen.blit(slika, koor)
+def prikaz(screen, slika, koor):
+    screen.blit(slika , koor)
 
 while running:
     screen.fill((200, 200, 240))
-    prikaz(sky_surface, (0, 0))
-    prikaz(ground_surface, (-10, 600))
+    prikaz(screen ,sky_surface, (0, 0))
+    prikaz(screen, ground_surface, (-10, 600))
     visina = 530
     promena = 1
     if visina < 500 or visina > 530:
         promena*=-1
     visina+=1*promena
-    prikaz(patkica1.crtaj(screen), ( patkica1.x ,visina))
-    prikaz(patkica2.crtaj(screen), (patkica2.x, visina))
-    prikaz(sky_surface, (0, 0))
-    prikaz(ground_surface, (-10, 600))
+    prikaz(screen, patkica1.crtaj_slika(), (patkica1.x - 160, visina))
+    prikaz(screen, patkica2.crtaj_slika(), (patkica2.x - 100, visina))
+    #prikaz(sky_surface, (0, 0))
+    #prikaz(ground_surface, (-10, 600))
     
     #print('potez1: ', potez1)
     if inklik:
@@ -153,8 +153,8 @@ while running:
         promena2 *= -1
     visina2 += 1*promena2
 
-    #prikaz(patkica1.crtaj(), (100, visina1))
-    #prikaz(patkica2.crtaj(), (840, visina2))
+    #prikaz(screen, patkica1.crtaj(screen), (100, visina1))
+    #prikaz(screen, patkica2.crtaj(screen), (840, visina2))
 
 
     if kockicaa:
@@ -203,7 +203,7 @@ while running:
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
-    
+    #prikaz(screen, ground_surface_half, (0, 650))
     pg.display.flip()
     clock.tick(60)
     

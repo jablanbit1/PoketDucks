@@ -1,5 +1,7 @@
 import pygame as pg
 
+
+
 class Patkica:
 
     def __init__(self, x, y, r, s):
@@ -8,14 +10,18 @@ class Patkica:
         self.vx = 0
         self.hp = 100
         self.r = r
-        if s == 0:
-            self.patka_surface = pg.image.load('slike/patka_editovana.png').convert_alpha()
-        else: 
-            self.patka_surface = pg.image.load('slike/patka1_editovana.png').convert_alpha()
+        self.s = s
 
 
     def crtaj(self, pozadina):
         pg.draw.circle(pozadina, (255, 255, 0), (self.x, self.y), self.r)
+    
+    def crtaj_slika(self):
+        if self.s == 0:
+            self.patka_surface = pg.image.load('slike/patkica1.png').convert_alpha()
+        else: 
+            self.patka_surface = pg.image.load('slike/patkica.png').convert_alpha()
+
         return self.patka_surface
     
     def plivaj(self):
