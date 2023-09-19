@@ -36,6 +36,7 @@ y1 = 0
 sledeci = 2
 
 font = pg.font.Font(None, 36)
+fontt = pg.font.Font(None, 72)
 hp1 = font.render('Player 1: ', True, (0, 0, 0))
 hp2 = font.render('Player 2: ', True, (0, 0, 0))
 
@@ -142,6 +143,19 @@ while running:
                     
     #Teren = Pravougaonik(SCREEN_WIDTH, 100)
     #Teren.crtanje(screen, SCREEN_HEIGHT - 100)
+    
+    
+    
+    if patkica1.hp == 0:
+        txt = fontt.render('PLAYER 2 WINS!', True, (0, 0, 0))
+        screen.blit(txt, (SCREEN_WIDTH // 2 - 200, SCREEN_HEIGHT // 2))
+        potez1 = False
+        potez2 = False
+    if patkica2.hp == 0:
+        txt = fontt.render('PLAYER 1 WINS!', True, (0, 0, 0))
+        screen.blit(txt, (SCREEN_WIDTH // 2 - 200, SCREEN_HEIGHT // 2))
+        potez1 = False
+        potez2 = False
     
     screen.blit(hp1, (30, 30))
     screen.blit(hp2, (SCREEN_WIDTH - 200, 30))
