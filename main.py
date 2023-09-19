@@ -18,9 +18,9 @@ patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30, 0)
 patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30, 1)
 
 #Dizajn
-sky_surface = pg.image.load('slike/NeboPSSL.png')
-ground_surface = pg.image.load('slike/more.png')
-ground_surface_half = pg.image.load('slike/morePola.png')
+sky_surface = pg.image.load('slike/NeboPSSL.png').convert_alpha()
+ground_surface = pg.image.load('slike/more.png').convert_alpha()
+ground_surface_half = pg.image.load('slike/morePola.png').convert_alpha()
 
 potez2 = False
 potez1 = True

@@ -9,9 +9,9 @@ class Patkica:
         self.hp = 100
         self.r = r
         if s == 0:
-            self.patka_surface = pg.image.load('slike/patka_editovana.png')
+            self.patka_surface = pg.image.load('slike/patka_editovana.png').convert_alpha()
         else: 
-            self.patka_surface = pg.image.load('slike/patka1_editovana.png')
+            self.patka_surface = pg.image.load('slike/patka1_editovana.png').convert_alpha()
 
 
     def crtaj(self, pozadina):
