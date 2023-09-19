@@ -15,6 +15,9 @@ pg.init()
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
+pg.mixer.music.load("RELJA_TORINNO_i_POPOVSKA_-_PROBLEMA_tekst.mp3")
+pg.mixer.music.set_volume(0.5)
+pg.mixer.music.play(-1)
 
 #patkice
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30, 0)
@@ -25,8 +28,9 @@ sky_surface = pg.image.load('slike/NeboPSSL.png').convert_alpha()
 ground_surface = pg.image.load('slike/more.png').convert_alpha()
 ground_surface_half = pg.image.load('slike/morePola.png').convert_alpha()
 
-potez2 = False
+
 potez1 = True
+potez2 = False
 potez2 = False
 
 inklik = False
@@ -35,6 +39,29 @@ x1 = 0
 y1 = 0
 visina1 = random.randint(501, 530)
 visina2 = random.randint(501, 530)
+
+n = 11
+
+x = SCREEN_WIDTH // 2
+x -= 5 * 40
+y = SCREEN_HEIGHT - 10.5 * 40
+
+
+"""
+led = []
+for i in range(n):
+    ledic = []
+    for j in range(n):
+        ledic.append(Santa(x, y))
+        x += 0
+    led.append(ledic)
+    y += 0
+    
+for i in range(n):
+    for j in range(n):
+        led[i][j].nacrtaj(screen)
+        
+"""
 
 promena2 = 1
 promena1 = 1
@@ -64,6 +91,8 @@ while running:
     visina+=1*promena
     prikaz(patkica1.crtaj(screen), ( patkica1.x ,visina))
     prikaz(patkica2.crtaj(screen), (patkica2.x, visina))
+    prikaz(sky_surface, (0, 0))
+    prikaz(ground_surface, (-10, 600))
     
     #print('potez1: ', potez1)
     if inklik:
@@ -77,7 +106,7 @@ while running:
         if event.type == pg.QUIT:
             pg.quit()
             quit()
-
+        
         if event.type == pg.MOUSEBUTTONDOWN and not inklik and (potez1 or potez2):
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
@@ -85,7 +114,6 @@ while running:
             inklik = True
         keys = pg.key.get_pressed()
         if potez1 :
-            
             kreni(patkica1, event, keys)
 
         if potez2 :
@@ -96,8 +124,8 @@ while running:
             x2 = poz2[0]
             y2 = poz2[1]
             inklik = False
-            vx = x2 - x1
-            vy = y2 - y1           
+            vx = (x2 - x1)/1.2
+            vy = (y2 - y1)/1.2   
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
@@ -113,17 +141,13 @@ while running:
                 sledeci = 1
 
             #Kretanje patke
-    
-            
-    
 
     """
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     """
 
-    prikaz(sky_surface, (0, 0))
-    prikaz(ground_surface, (-10, 600))
+
 
     promena1 = random.random()
     promena2 = random.random()  
@@ -170,8 +194,6 @@ while running:
                     
     #Teren = Pravougaonik(SCREEN_WIDTH, 100)
     #Teren.crtanje(screen, SCREEN_HEIGHT - 100)
-    
-    
     
     if patkica1.hp == 0:
         txt = fontt.render('PLAYER 2 WINS!', True, (0, 0, 0))
