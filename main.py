@@ -24,50 +24,38 @@ kockicaa = False
 x1 = 0
 y1 = 0
 
+
 sledeci = 2
 
 while running:
     screen.fill((200, 200, 240))
     
-    print('potez1: ', potez1)
+    #print('potez1: ', potez1)
     if inklik:
         if potez1:
             pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
         if potez2:
             pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
+
     for event in pg.event.get():
-<<<<<<< HEAD
-    
-=======
->>>>>>> 8d4bdb238478807190941304bef3e4036b59656b
         tren = pg.mouse.get_pos()
         if event.type == pg.QUIT:
             pg.quit()
             quit()
+
         if event.type == pg.MOUSEBUTTONDOWN and not inklik and (potez1 or potez2):
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
             y1 = poz1[1]
             inklik = True
-<<<<<<< HEAD
-        #if potez1:
-           # kreni(patkica1, event)
-        #if potez2:
-           # kreni(patkica2, event) 
-        if inklik:   
-            if potez1:
-                    pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1-tren[0]), patkica1.y + (y1-tren[1])), 6)
-            if potez2:
-                    pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1-tren[0]), patkica2.y + (y1-tren[1])), 6)
-
-=======
-        
-        #if potez1:
-            #kreni(patkica1, event)
-        #if potez2:
-            #kreni(patkica2, event)    
+        keys = pg.key.get_pressed()
+        if potez1 :
             
->>>>>>> 8d4bdb238478807190941304bef3e4036b59656b
+            kreni(patkica1, event, keys)
+
+        if potez2 :
+            kreni(patkica2, event, keys)
+
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
             x2 = poz2[0]
@@ -92,7 +80,7 @@ while running:
     
 
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT - 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
 
     #pozadina(sky_surface, (0, 0))
     #pozadina(ground_surface, (0, 600))
@@ -115,7 +103,7 @@ while running:
     
                     
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
-    Teren.crtanje(screen, SCREEN_HEIGHT - 100)
+    Teren.crtanje(screen, SCREEN_HEIGHT-100)
     
     pg.display.flip()
     clock.tick(60)
