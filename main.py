@@ -22,8 +22,9 @@ sky_surface = pg.image.load('slike/NeboPSSL.png').convert_alpha()
 ground_surface = pg.image.load('slike/more.png').convert_alpha()
 ground_surface_half = pg.image.load('slike/morePola.png').convert_alpha()
 
-potez2 = False
+
 potez1 = True
+potez2 = False
 potez2 = False
 
 inklik = False
@@ -31,7 +32,24 @@ kockicaa = False
 x1 = 0
 y1 = 0
 
-#test komit lol
+n = 11
+
+x = SCREEN_WIDTH // 2
+x -= 5 * 40
+y = SCREEN_HEIGHT - 10.5 * 40
+
+led = []
+for i in range(n):
+    ledic = []
+    for j in range(n):
+        ledic.append(Santa(x, y))
+        x += 0
+    led.append(ledic)
+    y += 0
+    
+for i in range(n):
+    for j in range(n):
+        led[i][j].nacrtaj(screen)
 
 sledeci = 2
 
@@ -75,7 +93,6 @@ while running:
             inklik = True
         keys = pg.key.get_pressed()
         if potez1 :
-            
             kreni(patkica1, event, keys)
 
         if potez2 :
@@ -103,15 +120,11 @@ while running:
                 sledeci = 1
 
             #Kretanje patke
-    
-            
-    
 
     """
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     """
-   
 
     if kockicaa:
         k.crtaj(screen)
@@ -135,16 +148,12 @@ while running:
             potez2 = True
             potez1 = False
             sledeci = 1
-                
-    print(sledeci)
     
     hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
     hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))
                     
     #Teren = Pravougaonik(SCREEN_WIDTH, 100)
     #Teren.crtanje(screen, SCREEN_HEIGHT - 100)
-    
-    
     
     if patkica1.hp == 0:
         txt = fontt.render('PLAYER 2 WINS!', True, (0, 0, 0))
@@ -162,8 +171,6 @@ while running:
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
-    
-
     
     pg.display.flip()
     clock.tick(60)
