@@ -1,4 +1,3 @@
-
 import pygame as pg
 
 def kreni(patkica, event, keys):
