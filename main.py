@@ -15,6 +15,9 @@ pg.init()
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
+pg.mixer.music.load("RELJA_TORINNO_i_POPOVSKA_-_PROBLEMA_tekst.mp3")
+pg.mixer.music.set_volume(0.5)
+pg.mixer.music.play(-1)
 
 #patkice
 patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30, 0)
@@ -70,22 +73,22 @@ fontt = pg.font.Font(None, 72)
 hp1 = font.render('Player 1: ', True, (0, 0, 0))
 hp2 = font.render('Player 2: ', True, (0, 0, 0))
 
-def prikaz(slika, koor):
-    screen.blit(slika, koor)
+def prikaz(screen, slika, koor):
+    screen.blit(slika , koor)
 
 while running:
     screen.fill((200, 200, 240))
-    prikaz(sky_surface, (0, 0))
-    prikaz(ground_surface, (-10, 600))
+    prikaz(screen ,sky_surface, (0, 0))
+    prikaz(screen, ground_surface, (-10, 600))
     visina = 530
     promena = 1
     if visina < 500 or visina > 530:
         promena*=-1
     visina+=1*promena
-    prikaz(patkica1.crtaj(screen), ( patkica1.x ,visina))
-    prikaz(patkica2.crtaj(screen), (patkica2.x, visina))
-    prikaz(sky_surface, (0, 0))
-    prikaz(ground_surface, (-10, 600))
+    prikaz(screen, patkica1.crtaj_slika(), (patkica1.x - 160, visina))
+    prikaz(screen, patkica2.crtaj_slika(), (patkica2.x - 100, visina))
+    #prikaz(sky_surface, (0, 0))
+    #prikaz(ground_surface, (-10, 600))
     
     for i in range(n):
         for j in range(n):
@@ -103,7 +106,7 @@ while running:
         if event.type == pg.QUIT:
             pg.quit()
             quit()
-
+        
         if event.type == pg.MOUSEBUTTONDOWN and not inklik and (potez1 or potez2):
             poz1 = pg.mouse.get_pos()
             x1 = poz1[0]
@@ -155,8 +158,8 @@ while running:
         promena2 *= -1
     visina2 += 1*promena2
 
-    #prikaz(patkica1.crtaj(), (100, visina1))
-    #prikaz(patkica2.crtaj(), (840, visina2))
+    #prikaz(screen, patkica1.crtaj(screen), (100, visina1))
+    #prikaz(screen, patkica2.crtaj(screen), (840, visina2))
 
 
     if kockicaa:
@@ -233,7 +236,7 @@ while running:
     
     patkica1.crtaj(screen)
     patkica2.crtaj(screen)
-    
+    #prikaz(screen, ground_surface_half, (0, 650))
     pg.display.flip()
     clock.tick(60)
     
