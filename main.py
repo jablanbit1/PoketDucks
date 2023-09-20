@@ -47,21 +47,21 @@ x -= 5 * 40
 y = SCREEN_HEIGHT - 10.5 * 40
 
 
-"""
+
 led = []
 for i in range(n):
     ledic = []
+    x = SCREEN_WIDTH // 2
+    x -= 5 * 40
     for j in range(n):
         ledic.append(Santa(x, y))
-        x += 0
+        x += 40
     led.append(ledic)
-    y += 0
+    y += 40
     
-for i in range(n):
-    for j in range(n):
-        led[i][j].nacrtaj(screen)
+
         
-"""
+
 
 promena2 = 1
 promena1 = 1
@@ -89,6 +89,10 @@ while running:
     prikaz(screen, patkica2.crtaj_slika(), (patkica2.x - 100, visina))
     #prikaz(sky_surface, (0, 0))
     #prikaz(ground_surface, (-10, 600))
+    
+    for i in range(n):
+        for j in range(n):
+            led[i][j].nacrtaj(screen)
     
     #print('potez1: ', potez1)
     if inklik:
@@ -120,8 +124,9 @@ while running:
             x2 = poz2[0]
             y2 = poz2[1]
             inklik = False
-            vx = (x2 - x1)/1.2
-            vy = (y2 - y1)/1.2   
+            vx = (x2 - x1) / 1.2
+            vy = (y2 - y1) / 1.2
+                   
             if potez1:
                 k = Kockica(patkica1.x, patkica1.y, vx, vy)
                 k.crtaj(screen)
@@ -161,11 +166,13 @@ while running:
         k.crtaj(screen)
         k.mrdaj()
         k.gravitacija()
+        
         if k.x < 0 or k.x > SCREEN_WIDTH or k.y > SCREEN_HEIGHT:
             if sledeci == 1:
                 potez1 = True
             if sledeci == 2:
                 potez2 = True
+                
         if abs(k.x - patkica1.x) < (k.a + patkica1.r) / 2 and abs(k.y - patkica1.y) < (k.a + patkica1.r) / 2 and sledeci == 1:
             patkica1.hp -= 10
             kockicaa = False
@@ -179,6 +186,32 @@ while running:
             potez2 = True
             potez1 = False
             sledeci = 1
+            
+        stop = False
+            
+        for i in range(n):
+            for j in range(n):
+                komadic = led[i][j]
+                dx = abs(komadic.x - k.x)
+                dy = abs(komadic.y - k.y)
+                d = (komadic.a + k.a) / 2
+                if komadic.postoji and dx < d and dy < d and not stop:
+                    led[i][j].crash(k)
+                    stop = True
+                    if sledeci == 1:
+                        kockicaa = False
+                        potez1 = True
+                        potez2 = False
+                        sledeci = 2
+                        print('1. gadja led, igra 2.')
+                    elif sledeci == 2:
+                        kockicaa = False
+                        potez2 = True
+                        potez1 = False
+                        sledeci = 1
+                        print('2. gadja led, igra 1.')
+            if stop:
+                break
                 
     
     hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
