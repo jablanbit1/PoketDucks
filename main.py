@@ -183,6 +183,10 @@ while running:
     
     hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
     hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))
+    pg.draw.rect(screen, (255, 0, 0), pg.Rect(30, 58, 100, 25))
+    pg.draw.rect(screen, (0, 255, 0), pg.Rect(30, 58, patkica1.hp, 25))
+    pg.draw.rect(screen, (255, 0, 0), pg.Rect(881, 58, 100, 25))
+    pg.draw.rect(screen, (0, 255, 0), pg.Rect(881, 58, patkica2.hp, 25))
                     
     #Teren = Pravougaonik(SCREEN_WIDTH, 100)
     #Teren.crtanje(screen, SCREEN_HEIGHT - 100)
