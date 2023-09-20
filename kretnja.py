@@ -1,6 +1,6 @@
 import pygame as pg
 
-def kreni(patkica, event, keys):
+def kreni(patkica, keys):
     #while(event.type==pg.KEYDOWN):    
     #if event.type == pg.KEYDOWN:
         #while event.type != pg.KEYUP:
@@ -21,19 +21,13 @@ def kreni(patkica, event, keys):
     
         if keys[pg.K_LEFT] and patkica.x>0:
                 
-                        pg.time.delay(200)
                         patkica.vx = -5
                         patkica.plivaj()
+                        pg.time.delay(50)
 
 
         if keys[pg.K_RIGHT] and patkica.x<1080:
                 
-                        pg.time.delay(200)
                         patkica.vx = 5
                         patkica.plivaj()
-                        
-                        
-
-   
-
-   
+                        pg.time.delay(50)
