@@ -16,12 +16,12 @@ screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pg.time.Clock()
 running = True
 pg.mixer.music.load("RELJA_TORINNO_i_POPOVSKA_-_PROBLEMA_tekst.mp3")
-pg.mixer.music.set_volume(0)   #0.5
+pg.mixer.music.set_volume(0.5)   #0.5
 pg.mixer.music.play(-1)
 
 #patkice
-patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 30, 0)
-patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 30, 1)
+patkica1 = Patkica(SCREEN_WIDTH / 6, SCREEN_HEIGHT - 132, 50, 0)
+patkica2 = Patkica(SCREEN_WIDTH * 5 / 6, SCREEN_HEIGHT - 132, 50, 1)
 
 #Dizajn
 sky_surface = pg.image.load('slike/NeboPSSL.png').convert_alpha()
@@ -58,10 +58,6 @@ for i in range(n):
         x += 40
     led.append(ledic)
     y += 40
-    
-
-        
-
 
 promena2 = 1
 promena1 = 1
