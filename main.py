@@ -47,7 +47,7 @@ x -= 5 * 40
 y = SCREEN_HEIGHT - 10.5 * 40
 
 
-
+"""
 led = []
 for i in range(n):
     ledic = []
@@ -58,10 +58,78 @@ for i in range(n):
         x += 40
     led.append(ledic)
     y += 40
-    
+"""    
+SCREEN_WIDTH = 1080
+BLOCK_WIDTH = 40
 
-        
 
+pattern = [
+    " , , , ,*, , , , ",
+    " , ,*, ,*, ,*, , ",
+    "*, ,*, ,*, ,*, ,*",
+    "*, ,*, ,*, ,*, ,*",
+]
+
+led = []
+num_rows = len(pattern)
+num_columns = len(pattern[0])
+start_x = SCREEN_WIDTH // 2 - (num_columns // 2) * BLOCK_WIDTH
+booo=0
+"""
+for row in range(num_rows):
+    ledic=[]
+    for col in range(num_columns):
+        if pattern[row][col] == "*":
+            x = start_x + col * BLOCK_WIDTH
+            y = row * BLOCK_WIDTH
+            ledic.append(Santa(x, y))
+            booo+=1
+        print(booo)
+    led.append(ledic)
+"""
+"""
+y = SCREEN_HEIGHT - 10.5 * 40
+nx=[]
+
+for i in range(num_rows):
+    x = SCREEN_WIDTH - (5 * 40)
+    kocke_leda = []
+    red = list
+    red.append((pattern[i].split(",")))
+    for j in range(num_columns):
+        if red[j] == "*":
+            tupl = Santa(tuple(x, y))
+            kocke_leda.append(tupl)
+        x+=40
+    led.append(kocke_leda)
+    y+=40
+
+SCREEN_WIDTH = 800
+BLOCK_WIDTH = 40
+"""
+#--------------------
+"""
+br_red=[]
+br_kolona=[]
+brojacI=0
+brojacJ=0
+led=[]
+for i in range(num_rows):
+    red=[]
+    niz_santi_za_red=[]
+    red.append(pattern[i].split(','))
+    for j in red:  #1. petlja
+        for k in j:  #2. petlja
+            if k == "*":
+                niz_santi_za_red.append(Santa(x, y))
+                brojacJ6+=1
+            x+=40
+        br_kolona.append(brojacJ)
+        brojacI=0
+        led.append(niz_santi_za_red)
+        y+=40
+"""
+#-----------------------------------------
 
 promena2 = 1
 promena1 = 1
@@ -72,10 +140,10 @@ font = pg.font.Font(None, 36)
 fontt = pg.font.Font(None, 72)
 hp1 = font.render('Player 1: ', True, (0, 0, 0))
 hp2 = font.render('Player 2: ', True, (0, 0, 0))
-pg.mixer.music.load("RELJA TORINNO i POPOVSKA - PROBLEMA (tekst).mp3")
-pg.mixer.music.set_volume(0)
+pg.mixer.music.load("RELJA_TORINNO_i_POPOVSKA_-_PROBLEMA_tekst.mp3")
+pg.mixer.music.set_volume(0.5)
 pg.mixer.music.play(-1)
-
+# 
 
 def prikaz(screen, slika, koor):
     screen.blit(slika , koor)
@@ -84,6 +152,7 @@ while running:
     screen.fill((200, 200, 240))
     prikaz(screen ,sky_surface, (0, 0))
     prikaz(screen, ground_surface, (-10, 600))
+
     """visina = 530
     promena = 1
     if visina < 500 or visina > 530:
@@ -93,17 +162,17 @@ while running:
     prikaz(screen, patkica2.crtaj_slika(), (patkica2.x - 100, visina))
     """#prikaz(sky_surface, (0, 0))
     #prikaz(ground_surface, (-10, 600))
-    
-    for i in range(n):
-        for j in range(n):
+    """
+    for i in range(num_rows):
+        for j in range(br_kolona[i]):
             led[i][j].nacrtaj(screen)
-    
+    """
     #print('potez1: ', potez1)
     if inklik:
         if potez1:
-            pg.draw.line(screen, (0, 0, 0),(patkica1.x, patkica1.y), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
+            pg.draw.line(screen, (0, 0, 0),(patkica1.x, visina1 + 80), (patkica1.x + (x1 - tren[0]), patkica1.y + (y1 - tren[1])), 6)
         if potez2:
-            pg.draw.line(screen, (0, 0, 0),(patkica2.x, patkica2.y), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
+            pg.draw.line(screen, (0, 0, 0),(patkica2.x, visina2 + 80), (patkica2.x + (x1 - tren[0]), patkica2.y + (y1 - tren[1])), 6)
 
     for event in pg.event.get():
         tren = pg.mouse.get_pos()
@@ -117,11 +186,11 @@ while running:
             y1 = poz1[1]
             inklik = True
         keys = pg.key.get_pressed()
-        if potez1 :
-            kreni(patkica1, keys)
+        if potez1:
+            kreni(patkica1, keys, event)
 
-        if potez2 :
-            kreni(patkica2, keys)
+        if potez2:
+            kreni(patkica2, keys, event)
 
         if event.type == pg.MOUSEBUTTONUP and inklik:
             poz2 = pg.mouse.get_pos()
@@ -151,7 +220,6 @@ while running:
     Teren = Pravougaonik(SCREEN_WIDTH, 100)
     Teren.crtanje(screen, SCREEN_HEIGHT-100)
     """
-
 
 
     """promena1 = random.random()
@@ -184,14 +252,14 @@ while running:
             if sledeci == 2:
                 potez2 = True
                 
-        if abs(k.x - patkica1.x) < (k.a + patkica1.r) / 2 and abs(k.y - patkica1.y) < (k.a + patkica1.r) / 2 and sledeci == 1:
+        if abs(k.x - patkica1.x+20) < (k.a + patkica1.r) / 2 and abs(k.y - visina1-20) < (k.a + patkica1.r) / 2 and sledeci == 1:
             patkica1.hp -= 10
             kockicaa = False
             potez1 = True
             potez2 = False
             sledeci = 2
 
-        if abs(k.x - patkica2.x) < (k.a + patkica2.r) / 2 and abs(k.y - patkica2.y) < (k.a + patkica2.r) / 2 and sledeci == 2:
+        if abs(k.x - patkica2.x-10) < (k.a + patkica2.r) / 2 and abs(k.y - visina2-10) < (k.a + patkica2.r) / 2 and sledeci == 2:
             patkica2.hp -= 10
             kockicaa = False
             potez2 = True
@@ -225,6 +293,7 @@ while running:
                 break
                 
     
+    pg.draw.circle(screen, (100,100,100), (patkica2.x, patkica2.y), patkica2.r)
     hp1 = font.render('Player 1: ' + str(patkica1.hp), True, (0, 0, 0))
     hp2 = font.render('Player 2: ' + str(patkica2.hp), True, (0, 0, 0))
     pg.draw.rect(screen, (255, 0, 0), pg.Rect(30, 58, 100, 25))
